@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg sticky-top bg-dark navbar-dark">
+    <div class="container-fluid">
+        <!-- logo -->
+        <a class="navbar-brand" routerLink="/">
+            GIL AVRAHAM | full-stuck Developer
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>      
+        <!-- menu -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item" (click)="clickTab($event)" name="home" routerLink="/">
+                    <a class="nav-link" [ngClass]="{'active' : homeTab}">Home</a></li>
+                <li class="nav-item" (click)="clickTab($event)" name="education" routerLink="/education">
+                    <a class="nav-link" [ngClass]="{'active' : educationTab}">Education</a></li>
+                <li class="nav-item" (click)="clickTab($event)" name="experience" routerLink="/experience">
+                    <a class="nav-link" [ngClass]="{'active' : experienceTab}" >Experience</a></li>
+                <li class="nav-item" (click)="clickTab($event)" name="contact" routerLink="/contact">
+                    <a class="nav-link" [ngClass]="{'active' : contactTab}" >Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
