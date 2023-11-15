@@ -1,17 +1,20 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ContactService } from '../contact.service';
+
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss']
+  styleUrls: ['./contact.component.scss'],
+  providers: [ContactService]
 })
 export class ContactComponent {
   contactForm!:FormGroup
   // title = 'formvalidation';
-  submitted = false;
+  pushedSubmit = false;
   
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, public contactS: ContactService) {}
 
   ngOnInit () {
     this.contactForm = this.formBuilder.group({
@@ -24,12 +27,11 @@ export class ContactComponent {
   }
 
   onSubmit() {
-    this.submitted = true
+    this.pushedSubmit = true
     if(this.contactForm.invalid) {
       return
     }
-    console.log('sucsess')
-
+    this.contactS.setSubmitted(true);
   }
 
 }

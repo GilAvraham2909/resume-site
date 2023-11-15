@@ -1,60 +1,66 @@
-<div class="container">
+<section class="page">
+  <div class="container">
     <p class="title">
         Contact me
     </p>
     <h4 class="sub-title">
-      you can find me in the folowing platforms:<br><br>
+      You can find me in the folowing platforms:<br><br>
       <a class="icon" href="https://www.linkedin.com/in/gil-avraham-49202a1a6/"><i class="bi bi-linkedin"></i></a>&nbsp;&nbsp;
       <a class="icon" href="https://github.com/GilAvraham2909?tab=repositories"><i class="bi bi-github"></i></a>
       <br>
       <br>
     </h4>
-</div>
-<div class="container form-container">
-  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()"  class="row g-3">
-    <div class="col-md-4">
-      <label class="form-label">First Name</label>
-      <input formControlName="firstName" [ngClass]="{'is-invalid':submitted && contactForm.get('firstName')?.errors}" type="text" class="form-control" id="firstName" placeholder="Example" required>
-      <div *ngIf="submitted && contactForm.get('firstName')?.errors?.['required']" class="text-danger">
-        First Name is required.
+  </div>
+  <div class="container form-container">
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()"  class="row g-3">
+      <div class="col-md-4">
+        <label class="form-label">First Name</label>
+        <input formControlName="firstName" [ngClass]="{'is-invalid':pushedSubmit && contactForm.get('firstName')?.errors}" type="text" class="form-control" id="firstName" placeholder="Example" required>
+        <div *ngIf="pushedSubmit && contactForm.get('firstName')?.errors?.['required']" class="text-danger">
+          First Name is required.
+        </div>
+        <div *ngIf="pushedSubmit && contactForm.get('firstName')?.errors?.['pattern']" class="text-danger">
+          Should contain only letters.
+        </div>
       </div>
-      <div *ngIf="submitted && contactForm.get('firstName')?.errors?.['pattern']" class="text-danger">
-        Should contain only letters.
+      <div class="col-md-4">
+        <label class="form-label">Last Name</label>
+        <input formControlName="lastName" [ngClass]="{'is-invalid':pushedSubmit && contactForm.get('lastName')?.errors}" type="text" class="form-control" id="lastName" placeholder="Example">
+        <div *ngIf="pushedSubmit && contactForm.get('lastName')?.errors?.['required']" class="text-danger">
+          Last Name is required.
+        </div>
+        <div *ngIf="pushedSubmit && contactForm.get('lastName')?.errors?.['pattern']" class="text-danger">
+          Should contain only letters.
+        </div>
       </div>
-    </div>
-    <div class="col-md-4">
-      <label class="form-label">Last Name</label>
-      <input formControlName="lastName" [ngClass]="{'is-invalid':submitted && contactForm.get('lastName')?.errors}" type="text" class="form-control" id="lastName" placeholder="Example">
-      <div *ngIf="submitted && contactForm.get('lastName')?.errors?.['required']" class="text-danger">
-        Last Name is required.
+      <div class="col-md-4">
+        <label class="form-label">Phone Number:</label>
+        <input formControlName="phoneNumber" [ngClass]="{'is-invalid':pushedSubmit && contactForm.get('phoneNumber')?.errors}" type="text" class="form-control" id="lastName" placeholder="000-0000000" required>
+        <div *ngIf="pushedSubmit && contactForm.get('phoneNumber')?.errors?.['required']" class="text-danger">
+          Phone Number is required.
+        </div>
+        <div *ngIf="pushedSubmit && contactForm.get('phoneNumber')?.errors?.['pattern']" class="text-danger">
+          Should be in right pattern.
+        </div>
       </div>
-      <div *ngIf="submitted && contactForm.get('lastName')?.errors?.['pattern']" class="text-danger">
-        Should contain only letters.
+      <div class="col-12">
+        <label class="form-label">Email</label >
+        <input formControlName="email" [ngClass]="{'is-invalid':pushedSubmit && contactForm.get('email')?.errors}" type="email" class="form-control" id="email" placeholder="example@example.com" required>
+        <div *ngIf="pushedSubmit && contactForm.get('email')?.errors?.['required']" class="text-danger">
+          Email is required.
+        </div>
+        <div *ngIf="pushedSubmit && contactForm.get('email')?.errors?.['email']" class="text-danger">
+          Should be valid email adress.
+        </div>
       </div>
-    </div>
-    <div class="col-md-4">
-      <label class="form-label">Phone Number:</label>
-      <input formControlName="phoneNumber" [ngClass]="{'is-invalid':submitted && contactForm.get('phoneNumber')?.errors}" type="text" class="form-control" id="lastName" placeholder="000-0000000" required>
-      <div *ngIf="submitted && contactForm.get('phoneNumber')?.errors?.['required']" class="text-danger">
-        Phone Number is required.
+      <!-- button -->
+      <div class="d-grid gap-2 col-6 mx-auto form-btn">
+        <button type="submit" class="btn btn-outline-light">Sign in</button>
       </div>
-      <div *ngIf="submitted && contactForm.get('phoneNumber')?.errors?.['pattern']" class="text-danger">
-        Should be in wright pattern.
-      </div>
-    </div>
-    <div class="col-12">
-      <label class="form-label">Email</label >
-      <input formControlName="email" [ngClass]="{'is-invalid':submitted && contactForm.get('email')?.errors}" type="email" class="form-control" id="email" placeholder="example@example.com" required>
-      <div *ngIf="submitted && contactForm.get('email')?.errors?.['required']" class="text-danger">
-        Email is required.
-      </div>
-      <div *ngIf="submitted && contactForm.get('email')?.errors?.['email']" class="text-danger">
-        Should be valid email adress.
-      </div>
-    </div>
-    <!-- button -->
-    <div class="d-grid gap-2 col-6 mx-auto form-btn">
-      <button type="submit" class="btn btn-outline-light">Sign in</button>
-    </div>
-  </form>
-</div>
+    </form>
+  </div>
+  <!-- sucsess msg -->
+  <div *ngIf="this.contactS.getifSubmitted()" class="container">
+    <h4 class="msg">Form sent successfully!</h4>
+  </div>
+</section>
