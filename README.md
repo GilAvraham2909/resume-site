@@ -6,7 +6,7 @@ This project was generated with Angular version 15.0.5.
 1. Install all dependencies.
 2. Check if port 4200 is open.
 3. Run the Angular server:
-    * run in terminal: `ng serve`
+    * run in terminal: `ng server`
 4. Navigate in browser : `http://localhost:4200/` 
 
 ## Links:
