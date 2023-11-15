@@ -1,6 +1,6 @@
 # ResumeSite
 
-This project was generated with Angular version 15.0.5.
+A self intreduce website based on Angular version 15.0.5.
 
  ## How to run:
 1. Install all dependencies.
